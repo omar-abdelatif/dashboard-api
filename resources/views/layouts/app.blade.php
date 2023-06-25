@@ -39,6 +39,5 @@
                 Components</a></div>
     </footer>
 </div>
-<script src="{{ asset('js/coreui.bundle.min.js') }}"></script>
 </body>
 </html>
