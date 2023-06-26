@@ -9,8 +9,9 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        $categories = Category::all();
         $pageTitle = 'Category';
-        return view('categories.index', compact('pageTitle'));
+        return view('categories.index', compact('pageTitle', 'categories'));
     }
     public function store(Request $request){
         $validated = $request->validate([
