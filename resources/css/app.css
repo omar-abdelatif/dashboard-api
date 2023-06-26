@@ -1,1 +1,5 @@
-@import url(../../node_modules/@coreui/coreui/dist/css/coreui.min.css);
+.wrapper {
+    width: 100%;
+    will-change: auto;
+    transition: padding 0.15s;
+}
