@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>@yield('title', 'Omar Abdelatif')</title>
     <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/css/coreui.min.css">
+    <link rel="stylesheet" href="{{asset('build/assets/app-f7bd1da9.css')}}">
     <meta name="theme-color" content="#ffffff">
     @vite('resources/sass/app.scss')
 </head>
