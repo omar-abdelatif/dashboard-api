@@ -3,3 +3,8 @@
     will-change: auto;
     transition: padding 0.15s;
 }
+
+.omar
+{
+    display: flex;
+}
