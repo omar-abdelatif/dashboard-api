@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{{asset('')}}" type="image/x-icon">
     <title>@yield('title', 'Omar Abdelatif')</title>
     <meta name="theme-color" content="#ffffff">
     @vite('resources/sass/app.scss')
