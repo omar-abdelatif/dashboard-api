@@ -18,10 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->integer('age');
             $table->bigInteger('phone_number');
-            $table->string('email')->unique();
+            $table->string('email', 100)->unique();
             $table->string('address')->nullable();
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 

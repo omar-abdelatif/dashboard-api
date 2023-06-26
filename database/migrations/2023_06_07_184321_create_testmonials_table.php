@@ -16,8 +16,7 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('img');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 
