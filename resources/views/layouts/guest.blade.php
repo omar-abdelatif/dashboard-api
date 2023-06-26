@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/css/coreui.min.css">
     <meta name="theme-color" content="#ffffff">
     @vite('resources/sass/app.scss')
 </head>
@@ -18,6 +19,6 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('js/coreui.bundle.min.js') }}"></script>
+<script src="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/js/coreui.bundle.js"></script>
 </body>
 </html>
