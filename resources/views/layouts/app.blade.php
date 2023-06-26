@@ -8,7 +8,7 @@
     <title>@yield('title', 'Omar Abdelatif')</title>
     <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/css/coreui.min.css">
     <link rel="stylesheet" href="{{url('resources/sass/app.scss')}}">
-    <link rel="stylesheet" href="{{url('resources/css/app.css')}}">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/omar-abdelatif/dashboard-api/04c6c64a62b2750fb82596fb784df106df4abe93/resources/css/app.css">
     <meta name="theme-color" content="#ffffff">
     @vite('resources/sass/app.scss')
 </head>
