@@ -25,7 +25,7 @@
         @yield('header')
 
         <div class="body flex-grow-1 px-3">
-            <div class="container-lg">
+            <div class="container">
                 @yield('content')
             </div>
         </div>

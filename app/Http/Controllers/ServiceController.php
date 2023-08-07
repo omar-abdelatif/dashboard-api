@@ -38,14 +38,15 @@ class ServiceController extends Controller
         }
         return redirect()->route('services.index')->withErrors($validated);
     }
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'max:500',
             'logo' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
         $service = Service::find($request->id);
-        if($service){
+        if ($service) {
             if ($request->hasFile('logo') && $service->logo !== null) {
                 $oldImagePath = public_path('assets/imgs/services/' . $service->logo);
                 if (file_exists($oldImagePath)) {
@@ -62,7 +63,7 @@ class ServiceController extends Controller
             $service->title = $validated['title'];
             $service->description = $validated['description'];
             $update = $service->save();
-            if($update){
+            if ($update) {
                 return redirect()->route('services.index')->with('success', 'Service Updated Successfully');
             }
         }
@@ -79,7 +80,7 @@ class ServiceController extends Controller
                 }
             }
             $services->delete();
-            return redirect()->route('services.index')->with('success', 'Service Deleted Successfully');
+            return redirect()->route('services.index')->withSuccess('Deleted Successfully');
         }
         return redirect()->route('services.index')->withErrors('Error Happen');
     }

@@ -20,8 +20,7 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <button class="btn btn-primary px-4"
-                                    type="submit">{{ __('click here to request another') }}</button>
+                            <button class="btn btn-primary px-4" type="submit">{{ __('click here to request another') }}</button>
                         </div>
                     </div>
                 </form>

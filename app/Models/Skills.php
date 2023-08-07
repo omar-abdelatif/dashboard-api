@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Skills extends Model
 {
     use HasFactory;
-    protected $table ='skills';
+    protected $table = 'skills';
     protected $fillable = [
         'img',
         'category',
         'category_id'
     ];
-    public function category() {
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 }

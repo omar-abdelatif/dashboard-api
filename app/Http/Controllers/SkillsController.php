@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Skills;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class SkillsController extends Controller
@@ -37,6 +37,35 @@ class SkillsController extends Controller
         ]);
         if ($store) {
             return redirect()->route('skills.index')->with('success', 'Skill Inserted Successfully');
+        }
+        return redirect()->route('skills.index')->withErrors($validated);
+    }
+    public function update(Request $request)
+    {
+        $validated = $request->validate([
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'category' => 'required'
+        ]);
+        $skills = Skills::find($request->id);
+        if ($skills) {
+            if ($request->hasFile('img') && $skills->img !== null) {
+                $oldImagePath = public_path('assets/imgs/skills/' . $skills->img);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+            if ($request->hasFile('img')) {
+                $upload = $request->file('img');
+                $name = time() . '.' . $upload->getClientOriginalExtension();
+                $destinationPath = public_path('assets/imgs/skills/');
+                $upload->move($destinationPath, $name);
+                $skills->img = $name;
+            }
+            $skills->category = $validated['category'];
+            $update = $skills->save();
+            if ($update) {
+                return redirect()->route('skills.index')->with('success', 'Skills Updated Successfully');
+            }
         }
         return redirect()->route('skills.index')->withErrors($validated);
     }

@@ -22,7 +22,8 @@ class ProjectController extends Controller
             'description' => 'required',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category' => 'required',
-            'tags' => 'required',
+            'tags' => 'required|array',
+            'tags.*' => 'required|string|distinct',
             'github' => 'required',
             'url' => 'required'
         ]);
@@ -35,21 +36,48 @@ class ProjectController extends Controller
             $name = 'download.png';
         }
         $category = Category::where('title', $validated['category'])->first();
+        $all_tags = implode(',', $request->input('tags'));
         $tags = Tags::where('title', $validated['tags'])->first();
         $store = Project::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
             'category' => $validated['category'],
-            'tags' => $validated['tags'],
+            'tags' => explode(',', $all_tags),
             'github' => $validated['github'],
             'url' => $validated['url'],
             'img' => $name,
             'category_id' => $category->id,
-            'tag_id' => $tags->id,
+            'tag_id' => explode(',', $tags->id),
         ]);
-        if($store){
+        if ($store) {
             return redirect()->route('projects.index')->with('success', 'Project Inserted Successfully');
+        } else {
+            return redirect()->route('projects.index')->withErrors($validated);
         }
-        return redirect()->route('projects.index')->withErrors($validated);
+    }
+    public function destroy($id)
+    {
+        $project = Project::find($id);
+        if ($project) {
+            $project->delete();
+            return redirect()->route('projects.index')->withSuccess("Deleted successfully");
+        }
+        return redirect()->route('projects.index')->withErrors('Error Happen');
+    }
+    public function update(Request $request)
+    {
+        $project =  Project::find($request->id);
+        if ($project) {
+            $project->title = $request->title;
+            $project->description = $request->description;
+            $project->category = $request->category;
+            $project->tags = $request->tags;
+            $project->github = $request->github;
+            $project->url = $request->url;
+            $update = $project->save();
+            if ($update)
+                return redirect()->route('projects.index')->withSuccess("Updated successfully");
+        }
+        return redirect()->route('projects.index')->withErrors('Error Happen');
     }
 }
