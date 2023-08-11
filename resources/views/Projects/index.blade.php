@@ -183,12 +183,11 @@
                     <td>{{$project->description}}</td>
                     <td>{{$project->category}}</td>
                     <td>
-                        {{-- @foreach ($tags as $tag)
+                        @foreach ($answers as $tag)
                             <span class="p-2 bg-primary rounded me-2 text-white mb-2">
-                                {{$tag->title}}
+                                {{$tag}}
                             </span>
-                        @endforeach --}}
-                        {{$project->tags}}
+                        @endforeach
                     </td>
                     <td>{{$project->url}}</td>
                     <td>{{$project->github}}</td>

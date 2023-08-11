@@ -9,12 +9,17 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $pageTitle = 'Projects';
         $categories = Category::all();
         $tags = Tags::all();
         $projects = Project::all();
-        return view('Projects.index', compact('pageTitle', 'categories', 'tags', 'projects'));
+        foreach ($projects as $project) {
+            $multiAnswers = $project->tags;
+            $answers = explode(',', $multiAnswers);
+        }
+        return view('Projects.index', compact('pageTitle', 'categories', 'tags', 'answers', 'projects'));
     }
     public function store(Request $request){
         $validated = $request->validate([
