@@ -15,12 +15,14 @@ class ProjectController extends Controller
         $categories = Category::all();
         $tags = Tags::all();
         $projects = Project::all();
+
+        $answers = [];
         foreach ($projects as $project) {
-            $multiAnswers = $project->tags;
-            $answers = explode(',', $multiAnswers);
+            $answers = explode(',', $project->tags);
         }
-        return view('Projects.index', compact('pageTitle', 'categories', 'tags', 'answers', 'projects'));
+        return view('Projects.index', compact('pageTitle', 'categories', 'answers', 'tags', 'projects'));
     }
+
     public function store(Request $request){
         $validated = $request->validate([
             'title' => 'required',
@@ -41,18 +43,20 @@ class ProjectController extends Controller
             $name = 'download.png';
         }
         $category = Category::where('title', $validated['category'])->first();
-        $all_tags = implode(',', $request->input('tags'));
-        $tags = Tags::where('title', $validated['tags'])->first();
+        $all_tags = $validated['tags'];
+        $tags = collect($all_tags)->map(function ($tag) {
+            return Tags::updateOrCreate(['title' => $tag], ['title' => $tag]);
+        });
         $store = Project::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
             'category' => $validated['category'],
-            'tags' => explode(',', $all_tags),
+            'tags' => $all_tags,
             'github' => $validated['github'],
             'url' => $validated['url'],
             'img' => $name,
             'category_id' => $category->id,
-            'tag_id' => explode(',', $tags->id),
+            // 'tag_id' => $all_tags->id,
         ]);
         if ($store) {
             return redirect()->route('projects.index')->with('success', 'Project Inserted Successfully');
@@ -65,7 +69,9 @@ class ProjectController extends Controller
         $project = Project::find($id);
         if ($project) {
             $project->delete();
-            return redirect()->route('projects.index')->withSuccess("Deleted successfully");
+            return redirect()->route('projects.index')->with([
+                'success' => "Deleted successfully",
+            ]);
         }
         return redirect()->route('projects.index')->withErrors('Error Happen');
     }

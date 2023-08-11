@@ -109,7 +109,7 @@
                                     <label for="tags" class="text-white">
                                         <b>Tags</b>
                                     </label>
-                                    <select name="tags[]" id="ms1" class="form-multi-select form-multi-select-multiple form-multi-select-selection-tags form-multi-select-with-cleaner" multiple data-coreui-search="true">
+                                    <select name="tags[]" class="form-multi-select form-multi-select-multiple form-multi-select-selection-tags form-multi-select-with-cleaner" multiple data-coreui-search="true">
                                         <option>Choose Tags</option>
                                         @foreach ($tags as $tag)
                                             <option class="form-multi-select-option" value="{{$tag->title}}">{{$tag->title}}</option>
