@@ -18,11 +18,29 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('blogs.index') }}">
+        <a class="nav-link" href="{{ route('categories.index') }}">
             <svg class="nav-icon">
                 <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
             </svg>
-            {{ __('Blogs') }}
+            {{ __('Categories') }}
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('tags.index') }}">
+            <svg class="nav-icon">
+                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+            </svg>
+            {{ __('Tags') }}
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('services.index') }}">
+            <svg class="nav-icon">
+                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+            </svg>
+            {{ __('Services') }}
         </a>
     </li>
 
@@ -45,15 +63,6 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('tags.index') }}">
-            <svg class="nav-icon">
-                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
-            </svg>
-            {{ __('Tags') }}
-        </a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link" href="{{ route('infos.index') }}">
             <svg class="nav-icon">
                 <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
@@ -63,24 +72,15 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('services.index') }}">
+        <a class="nav-link" href="{{ route('blogs.index') }}">
             <svg class="nav-icon">
                 <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
             </svg>
-            {{ __('Services') }}
+            {{ __('Blogs') }}
         </a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('categories.index') }}">
-            <svg class="nav-icon">
-                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
-            </svg>
-            {{ __('Categories') }}
-        </a>
-    </li>
-
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('users.index') }}">
             <svg class="nav-icon">
                 <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
@@ -131,5 +131,5 @@
                 </a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 </ul>
