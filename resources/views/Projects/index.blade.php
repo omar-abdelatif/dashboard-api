@@ -110,7 +110,6 @@
                                         <b>Tags</b>
                                     </label>
                                     <select name="tags[]" class="form-multi-select form-multi-select-multiple form-multi-select-selection-tags form-multi-select-with-cleaner" multiple data-coreui-search="true">
-                                        <option>Choose Tags</option>
                                         @foreach ($tags as $tag)
                                             <option class="form-multi-select-option" value="{{$tag->title}}">{{$tag->title}}</option>
                                         @endforeach
@@ -183,10 +182,8 @@
                     <td>{{$project->description}}</td>
                     <td>{{$project->category}}</td>
                     <td>
-                        @foreach ($answers as $tag)
-                            <span class="p-2 bg-primary rounded me-2 text-white mb-2">
-                                {{$tag}}
-                            </span>
+                        @foreach (explode(',', $project->tags) as $tag)
+                            <span class="p-2 bg-primary rounded text-white">{{$tag}}</span>
                         @endforeach
                     </td>
                     <td>{{$project->url}}</td>
@@ -196,20 +193,20 @@
                     </td>
                     <td>
                         {{-- edit --}}
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit_project{{$project->id}}">
+                        <button type="button" class="btn btn-warning" data-coreui-toggle="modal" data-coreui-target="#edit_project_{{$project->id}}">
                             <b>
                                 Edit
                             </b>
                         </button>
-                        <div class="modal fade" id="edit_project{{$project->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="edit_project_{{$project->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Update Project {{$project->title}}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body bg-dark">
-                                        <form action="{{secure_url('update_project')}}" method="post" enctype="multipart/form-data">
+                                        <form action="{{route('projects.update')}}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
                                                 <input type="hidden" name="id" value="{{$project->id}}">

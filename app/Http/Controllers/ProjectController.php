@@ -15,15 +15,10 @@ class ProjectController extends Controller
         $categories = Category::all();
         $tags = Tags::all();
         $projects = Project::all();
-
-        $answers = [];
-        foreach ($projects as $project) {
-            $answers = explode(',', $project->tags);
-        }
-        return view('Projects.index', compact('pageTitle', 'categories', 'answers', 'tags', 'projects'));
+        return view('Projects.index', compact('pageTitle', 'categories', 'tags', 'projects'));
     }
-
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -48,7 +43,7 @@ class ProjectController extends Controller
             'title' => $validated['title'],
             'description' => $validated['description'],
             'category' => $validated['category'],
-            'tags' => $all_tags,
+            'tags' => implode(',', $all_tags),
             'github' => $validated['github'],
             'url' => $validated['url'],
             'img' => $name,
@@ -64,6 +59,12 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
         if ($project) {
+            if ($project->img !== null) {
+                $oldPath = public_path('assets/imgs/projects/' . $project->img);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
+            }
             $project->delete();
             return redirect()->route('projects.index')->with([
                 'success' => "Deleted successfully",

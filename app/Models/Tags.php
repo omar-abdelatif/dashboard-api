@@ -10,4 +10,8 @@ class Tags extends Model
     use HasFactory;
     protected $table = 'tags';
     protected $fillable = ['title'];
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

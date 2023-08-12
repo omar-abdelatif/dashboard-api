@@ -18,6 +18,13 @@ class Project extends Model
         'github',
         'url',
         'category_id',
-        'tag_id'
     ];
+    public function categories()
+    {
+        return $this->hasOne(Category::class);
+    }
+    public function tags()
+    {
+        return $this->hasMany(Tags::class);
+    }
 }
