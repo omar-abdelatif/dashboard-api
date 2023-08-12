@@ -232,10 +232,12 @@
                                                         <label for="tag" class="text-white">
                                                             <b>Tag</b>
                                                         </label>
-                                                        <select name="tags" id="tag" class="form-control text-center">
-                                                            <option>Choose Tag</option>
+                                                        <select name="tags[]" class="form-multi-select form-multi-select-multiple form-multi-select-selection-tags form-multi-select-with-cleaner" multiple data-coreui-search="true">
                                                             @foreach ($tags as $tag)
-                                                                <option value="{{$tag->title}}" {{$project->tags == $tag->title ? 'selected' : ''}}>{{$tag->title}}</option>
+                                                                <option value="{{$tag->title}}"
+                                                                    @if (collect(explode(',', $project->tags))->contains($tag->title))
+                                                                        selected
+                                                                    @endif>{{$tag->title}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>

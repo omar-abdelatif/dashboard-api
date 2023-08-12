@@ -79,7 +79,7 @@ class ProjectController extends Controller
             $project->title = $request->title;
             $project->description = $request->description;
             $project->category = $request->category;
-            $project->tags = $request->tags;
+            $project->tags = implode(',', $request->input('tags'));
             $project->github = $request->github;
             $project->url = $request->url;
             $update = $project->save();
