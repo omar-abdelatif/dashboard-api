@@ -44,9 +44,6 @@ class ProjectController extends Controller
         }
         $category = Category::where('title', $validated['category'])->first();
         $all_tags = $validated['tags'];
-        $tags = collect($all_tags)->map(function ($tag) {
-            return Tags::updateOrCreate(['title' => $tag], ['title' => $tag]);
-        });
         $store = Project::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
@@ -56,7 +53,6 @@ class ProjectController extends Controller
             'url' => $validated['url'],
             'img' => $name,
             'category_id' => $category->id,
-            // 'tag_id' => $all_tags->id,
         ]);
         if ($store) {
             return redirect()->route('projects.index')->with('success', 'Project Inserted Successfully');

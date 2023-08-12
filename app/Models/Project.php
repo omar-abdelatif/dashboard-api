@@ -20,8 +20,4 @@ class Project extends Model
         'category_id',
         'tag_id'
     ];
-    public function tags()
-    {
-        return $this->hasMany(Tags::class);
-    }
 }

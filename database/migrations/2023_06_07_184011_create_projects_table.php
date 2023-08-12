@@ -22,8 +22,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('url');
             $table->string('github');
-            $table->foreignId('category_id');
-            $table->foreignId('tag_id');
+            $table->integer('category_id')->index()->refrences('id')->on('category')->update('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
