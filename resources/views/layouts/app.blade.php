@@ -21,6 +21,7 @@
         <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
     </div>
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+        @include('layouts.header')
         @yield('header')
 
         <div class="body flex-grow-1 px-3">

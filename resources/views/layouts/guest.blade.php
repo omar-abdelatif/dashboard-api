@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/css/coreui.min.css">
+    <link rel="shortcut icon" href={{asset('assets/imgs/logo/favicon.png')}} type="image/x-icon">
     <meta name="theme-color" content="#ffffff">
-    @vite('resources/sass/app.scss')
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
 
