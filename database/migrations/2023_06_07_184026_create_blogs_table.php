@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('img');
             $table->string('content');
             $table->string('category');
-            $table->foreignId('category_id');
+            $table->integer('category_id')->index()->references('id')->on('category')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

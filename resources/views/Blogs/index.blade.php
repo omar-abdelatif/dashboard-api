@@ -31,7 +31,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body bg-dark">
-                    <form action="{{ secure_url('store_blogs') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('blogs.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
@@ -57,8 +57,15 @@
                                     <select name="category" id="category" class="form-control text-center">
                                         <option value="">Select category...</option>
                                         @foreach ($categories as $category)
+                                            <option value={{$category->title}}>{{$category->title}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <label for="content" class="text-white">
+                                        <b>Content:</b>
+                                    </label>
+                                    <textarea class="form-control pt-3 text-center" placeholder="Content Here" name="content"></textarea>
                                 </div>
                                 <div class="form-group text-center">
                                     <button type="submit"
@@ -94,6 +101,13 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        
+        <tbody>
+            @foreach ($blogs as $blog)
+                <tr>
+                    <td>{{$i++}}</td>
+                    <td>{{ $blog['title'] }}</td>
+                </tr>
+            @endforeach
+        </tbody>
     </table>
 @endsection
