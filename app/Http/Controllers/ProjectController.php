@@ -76,6 +76,23 @@ class ProjectController extends Controller
     {
         $project =  Project::find($request->id);
         if ($project) {
+            //! Delete Old Img
+            if ($request->hasFile('img') && $project->img !== null) {
+                $oldPath = public_path('assets/imgs/projects/' . $project->img);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
+            }
+            // ! Upload New Image
+            if ($request->hasFile('img') && $request->file('img')->isValid()) {
+                $upload = $request->file('img');
+                $name = time() . '.' . $upload->getClientOriginalExtension();
+                $destinationPath = public_path('assets/imgs/projects/');
+                $upload->move($destinationPath, $name);
+                $project->img = $name;
+            } elseif (!$request->file('img')) {
+                $name = 'download.png';
+            }
             $project->title = $request->title;
             $project->description = $request->description;
             $project->category = $request->category;
@@ -83,8 +100,9 @@ class ProjectController extends Controller
             $project->github = $request->github;
             $project->url = $request->url;
             $update = $project->save();
-            if ($update)
+            if ($update) {
                 return redirect()->route('projects.index')->withSuccess("Updated successfully");
+            }
         }
         return redirect()->route('projects.index')->withErrors('Error Happen');
     }

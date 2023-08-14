@@ -2,7 +2,7 @@
 @section('title', 'Omar Abdelatif | ' . $pageTitle)
 @section('header')
     <header class="header header-sticky mb-4 d-block">
-        
+
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row">
@@ -147,7 +147,7 @@
                         <img src="{{asset('assets/imgs/projects/' . $project->img)}}" alt="{{$project->title}}" width="50" class="rounded">
                     </td>
                     <td>
-                        {{-- edit --}}
+                        {{-- ! edit ! --}}
                         <button type="button" class="btn btn-warning" data-coreui-toggle="modal" data-coreui-target="#edit_project_{{$project->id}}">
                             <b>
                                 Edit
@@ -200,25 +200,19 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group text-center mb-3">
                                                         <label for="url" class="text-white">
-                                                            <b>
-                                                                Url
-                                                            </b>
+                                                            <b>Url</b>
                                                         </label>
                                                         <input type="text" class="form-control text-center" name="url" id="url" value="{{$project->url}}">
                                                     </div>
                                                     <div class="form-group text-center mb-3">
                                                         <label for="github" class="text-white">
-                                                            <b>
-                                                                Github
-                                                            </b>
+                                                            <b>Github</b>
                                                         </label>
                                                         <input type="text" name="github" id="github" class="form-control text-center" value="{{$project->github}}">
                                                     </div>
                                                     <div class="form-group text-center mb-3">
                                                         <label for="img" class="text-white">
-                                                            <b>
-                                                                Image
-                                                            </b>
+                                                            <b>Image</b>
                                                         </label>
                                                         <input type="file" name="img" id="img" class="form-control text-center" value="{{$project->img}}">
                                                     </div>
