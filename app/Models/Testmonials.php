@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Testmonials extends Model
 {
     use HasFactory;
+    protected $table = 'testmonials';
+    protected $fillable = [
+        'client_name',
+        'title',
+        'img',
+    ];
 }

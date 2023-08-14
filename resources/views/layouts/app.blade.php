@@ -46,5 +46,6 @@
     </div>
     <script src="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/js/coreui.bundle.js"></script>
     <script src="https://unpkg.com/@fortawesome/fontawesome-free@6.4.2/js/all.min.js"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
 </body>
 </html>

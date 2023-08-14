@@ -45,6 +45,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('update_tags', [TagsController::class, 'update'])->name('tags.update');
     //! Testmonials Routes
     Route::get('all_testmonials', [TestmonialsController::class, 'index'])->name('testmonials.index');
+    Route::post('store_testmonials', [TestmonialsController::class, 'store'])->name('testmonials.store');
+    Route::post('update_testmonials', [TestmonialsController::class, 'update'])->name('testmonials.update');
+    Route::get('destroy_testmonials/{id}', [TestmonialsController::class, 'destroy'])->name('testmonials.destroy');
     //! Blogs Routes
     Route::get('all_blogs', [BlogController::class, 'index'])->name('blogs.index');
     Route::post('store_blogs', [BlogController::class, 'store'])->name('blogs.store');

@@ -2,7 +2,6 @@
 @section('title', 'Omar Abdelatif | ' . $pageTitle)
 @section('header')
     <header class="header header-sticky mb-4 d-block">
-
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row">
@@ -103,12 +102,12 @@
 @endsection
 @section('content')
     @if (session('success'))
-        <div class="alert alert-success text-center mt-5">
+        <div id="success" class="alert alert-success w-50 mx-auto text-center mt-5">
             <p class="m-0">{{ session('success') }}</p>
         </div>
     @elseif ($errors->any())
         @foreach ($errors->all() as $error)
-            <div class="alert alert-danger text-center mt-5">
+            <div id="error" class="alert alert-danger w-50 mx-auto text-center mt-5">
                 <p class="mb-0">{{ $error }}</p>
             </div>
         @endforeach

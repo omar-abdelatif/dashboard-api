@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Category;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -19,7 +19,8 @@ class BlogController extends Controller
     }
     public function store(Request $request)
     {
-        $validated = $request->validate(['author' => 'required',
+        $validated = $request->validate([
+            'author' => 'required',
             'title' => 'required',
             'img' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
             'content' => 'required',
@@ -34,7 +35,8 @@ class BlogController extends Controller
             $name = 'download.png';
         }
         $category = Category::where('title', $validated['category'])->first();
-        $store = Blog::create(['author' => $validated['author'],
+        $store = Blog::create([
+            'author' => $validated['author'],
             'title' => $validated['title'],
             'category' => $validated['category'],
             'content' => $validated['content'],
