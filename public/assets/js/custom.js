@@ -5,13 +5,3 @@ setTimeout(function () {
     Success.style.display = 'none';
     Error.style.display = 'none';
 }, 5000)
-
-
-
-
-
-
-
-
-
-
