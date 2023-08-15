@@ -30,19 +30,7 @@
                 @yield('content')
             </div>
         </div>
-        <footer class="footer">
-            <div>
-                <a href="https://coreui.io">CoreUI </a>
-                <a href="https://coreui.io">Bootstrap Admin Template</a>
-                &copy; 2021 creativeLabs.
-            </div>
-            <div class="ms-auto">
-                Powered by&nbsp;
-                <a href="https://coreui.io/bootstrap/ui-components/">
-                    CoreUI UI Components
-                </a>
-            </div>
-        </footer>
+        @include('layouts.footer')
     </div>
     <script src="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/js/coreui.bundle.js"></script>
     <script src="https://unpkg.com/@fortawesome/fontawesome-free@6.4.2/js/all.min.js"></script>

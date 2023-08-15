@@ -65,6 +65,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('update_service', [ServiceController::class, 'update'])->name('services.update');
     //! Information Routes
     Route::get('all_infos', [InformationController::class, 'index'])->name('infos.index');
-    //! Social Links Routes
-    Route::get('all_links', [SocialLinksController::class, 'index'])->name('links.index');
+    Route::post('store_info', [InformationController::class, 'store'])->name('infos.store');
+    Route::get('delete_info/{id}', [InformationController::class, 'destroy'])->name('infos.destroy');
+    Route::post('update_info', [InformationController::class, 'update'])->name('infos.update');
 });
