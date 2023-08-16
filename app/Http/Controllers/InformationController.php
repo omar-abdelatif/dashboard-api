@@ -20,6 +20,10 @@ class InformationController extends Controller
             'address' => 'required|alpha_num|max:100',
             'phone_number' => 'required|numeric',
             'email' => 'required|email',
+            'facebook_link' => 'required',
+            'github_link' => 'required',
+            'whasapp_link' => 'required',
+            'linkedin_link' => 'required',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         if ($request->hasFile('img') && $request->file('img')->isValid()) {
@@ -36,6 +40,10 @@ class InformationController extends Controller
             'address' => $validated['address'],
             'phone_number' => $validated['phone_number'],
             'email' => $validated['email'],
+            'facebook_link' => $validated['facebook_link'],
+            'github_link' => $validated['github_link'],
+            'whasapp_link' => $validated['whatsapp_link'],
+            'linkedin_link' => $validated['linkedin_link'],
             'img' => $name
         ]);
         if ($store) {
@@ -68,6 +76,10 @@ class InformationController extends Controller
             $info->phone_number = $request->phone_number;
             $info->email = $request->email;
             $info->address = $request->address;
+            $info->facebook_link = $request->facebook_link;
+            $info->github_link = $request->github_link;
+            $info->whatsapp_link = $request->whatsapp_link;
+            $info->linkedin_link = $request->linkedin_link;
             $update = $info->save();
             if ($update) {
                 return redirect()->route('infos.index')->withSuccess('Updated Successfully');

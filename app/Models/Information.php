@@ -15,6 +15,10 @@ class Information extends Model
         'phone_number',
         'address',
         'age',
-        'img'
+        'img',
+        'facebook_link',
+        'github_link',
+        'whasapp_link',
+        'linkedin_link'
     ];
 }

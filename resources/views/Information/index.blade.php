@@ -23,7 +23,7 @@
         </section>
     </header>
     <div class="modal fade" id="add_info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add New Information</h5>
@@ -32,41 +32,71 @@
                 <div class="modal-body bg-dark">
                     <form action="{{route('infos.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group text-center mb-3">
-                            <label class="text-white" for="name">
-                                <b>Name</b>
-                            </label>
-                            <input type="text" name="name" id="name" class="form-control text-center" placeholder="Your Name">
-                        </div>
-                        <div class="form-group text-center mb-3">
-                            <label for="age" class="text-white">
-                                <b>Age</b>
-                            </label>
-                            <input type="number" class="form-control text-center" placeholder="Your Age" id="age" name="age" >
-                        </div>
-                        <div class="form-group text-center mb-3">
-                            <label for="phone_number" class="text-white">
-                                <b>Mobile Number</b>
-                            </label>
-                            <input type="number" class="form-control text-center" placeholder="Your Phone Numbr" id="phone_number" name="phone_number" >
-                        </div>
-                        <div class="form-group text-center mb-3">
-                            <label for="address" class="text-white">
-                                <b>Address</b>
-                            </label>
-                            <input type="text" class="form-control text-center" placeholder="Address" id="address" name="address" >
-                        </div>
-                        <div class="form-group text-center mb-3">
-                            <label for="email" class="text-white">
-                                <b>Work Email</b>
-                            </label>
-                            <input type="email" class="form-control text-center" placeholder="Your Work Email" id="email" name="email" >
-                        </div>
-                        <div class="form-group text-center mb-3">
-                            <label for="img" class="text-white">
-                                <b>Profile Image</b>
-                            </label>
-                            <input type="file" name="img" id="img" class="form-control text-center" accept="image/*">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group text-center mb-3">
+                                    <label class="text-white" for="name">
+                                        <b>Name</b>
+                                    </label>
+                                    <input type="text" name="name" id="name" class="form-control text-center" placeholder="Your Name">
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <label for="age" class="text-white">
+                                        <b>Age</b>
+                                    </label>
+                                    <input type="number" class="form-control text-center" placeholder="Your Age" id="age" name="age" >
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <label for="phone_number" class="text-white">
+                                        <b>Mobile Number</b>
+                                    </label>
+                                    <input type="number" class="form-control text-center" placeholder="Your Phone Numbr" id="phone_number" name="phone_number" >
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <label for="facebook" class="text-white">
+                                        <b>Facebook Username</b>
+                                    </label>
+                                    <input type="text" name="facebook_link" id="facebook" placeholder="Facebook Username" class="form-control text-center">
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <label for="github" class="text-white">
+                                        <b>Github Username</b>
+                                    </label>
+                                    <input type="text" name="github_link" id="github" placeholder="Github Username" class="form-control text-center">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group text-center mb-3">
+                                    <label for="address" class="text-white">
+                                        <b>Address</b>
+                                    </label>
+                                    <input type="text" class="form-control text-center" placeholder="Address" id="address" name="address" >
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <label for="email" class="text-white">
+                                        <b>Work Email</b>
+                                    </label>
+                                    <input type="email" class="form-control text-center" placeholder="Your Work Email" id="email" name="email" >
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <label for="img" class="text-white">
+                                        <b>Profile Image</b>
+                                    </label>
+                                    <input type="file" name="img" id="img" class="form-control text-center" accept="image/*">
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <label for="whatsapp" class="text-white">
+                                        <b>Whatsapp Link</b>
+                                    </label>
+                                    <input type="text" name="whatsapp_link" id="whatsapp" placeholder="Whatsapp Link" class="form-control text-center">
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <label for="linkedin" class="text-white">
+                                        <b>Linkedin Username</b>
+                                    </label>
+                                    <input type="text" name="linkedin_link" id="linkedin" placeholder="Linkedin Username" class="form-control text-center">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-success w-100 mt-3 text-center text-white">Submit</button>
@@ -97,10 +127,14 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Age</th>
-                    <th>Phone Number</th>
+                    <th>Mobile</th>
                     <th>Address</th>
                     <th>Work Email</th>
                     <th>Image</th>
+                    <th>Facebook</th>
+                    <th>Whatsapp</th>
+                    <th>Github</th>
+                    <th>Linkedin</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -117,9 +151,29 @@
                             <img src={{asset('assets/imgs/information/'.$info->img)}} width="50" class="rounded" alt={{$info->name}}>
                         </td>
                         <td>
+                            <a href="https://www.facebook.com/{{$info->facebook_link}}" target="_blank">
+                                <i class="fa-solid fa-link"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://wa.me/{{$info->whatsapp_link}}" target="_blank">
+                                <i class="fa-solid fa-link"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://github.com/{{$info->github_link}}" target="_blank">
+                                <i class="fa-solid fa-link"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://linkedin.com/in/{{$info->linkedin_link}}" target="_blank">
+                                <i class="fa-solid fa-link"></i>
+                            </a>
+                        </td>
+                        <td>
                             <button type="button" class="btn btn-warning" data-coreui-toggle="modal" data-coreui-target="#edit_info{{$info->id}}">
                                 <b>
-                                    Edit
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                 </b>
                             </button>
                             <div class="modal fade" id="edit_info{{$info->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -153,6 +207,18 @@
                                                             </label>
                                                             <input type="number" class="form-control text-center" value="{{$info->phone_number}}" placeholder="Your Phone Numbr" id="phone_number" name="phone_number" >
                                                         </div>
+                                                        <div class="form-group text-center mb-3">
+                                                            <label for="facebook" class="text-white">
+                                                                <b>Facebook Username</b>
+                                                            </label>
+                                                            <input type="text" name="facebook_link" value="{{$info->facebook_link}}" id="facebook" placeholder="Facebook Username" class="form-control text-center">
+                                                        </div>
+                                                        <div class="form-group text-center mb-3">
+                                                            <label for="github" class="text-white">
+                                                                <b>Github Username</b>
+                                                            </label>
+                                                            <input type="text" name="github_link" value="{{$info->github_link}}" id="github" placeholder="Github Username" class="form-control text-center">
+                                                        </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-group text-center mb-3">
@@ -172,6 +238,18 @@
                                                                 <b>Profile Image</b>
                                                             </label>
                                                             <input type="file" name="img" id="img" class="form-control text-center" value="{{$info->img}}" accept="image/*">
+                                                        </div>
+                                                        <div class="form-group text-center mb-3">
+                                                            <label for="whatsapp" class="text-white">
+                                                                <b>Whatsapp Link</b>
+                                                            </label>
+                                                            <input type="text" name="whatsapp_link" value="{{$info->whatsapp_link}}" id="whatsapp" placeholder="Whatsapp Link" class="form-control text-center">
+                                                        </div>
+                                                        <div class="form-group text-center mb-3">
+                                                            <label for="linkedin" class="text-white">
+                                                                <b>Linkedin Username</b>
+                                                            </label>
+                                                            <input type="text" name="linkedin_link" value="{{$info->linkedin_link}}" id="linkedin" placeholder="Linkedin Username" class="form-control text-center">
                                                         </div>
                                                     </div>
                                                 </div>
