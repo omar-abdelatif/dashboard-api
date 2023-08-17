@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     //! Dashboard Routes
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('upload_img', [DashboardController::class, 'UploadAvatar'])->name('upload.avatar');
     //! Projects Routes
     Route::get('all_projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::post('store', [ProjectController::class, 'store'])->name('projects.store');
