@@ -8,39 +8,50 @@
                     <h1>{{ __('Login') }}</h1>
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
-                        <div class="input-group mb-3"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
-                      </svg></span>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email"
-                                   placeholder="{{ __('Email') }}" required autofocus>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="{{ __('Email') }}" required autofocus>
                             @error('email')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
-                        <div class="input-group mb-4"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
-                      </svg></span>
-                            <input class="form-control @error('password') is-invalid @enderror" type="password"
-                                   name="password"
-                                   placeholder="{{ __('Password') }}" required>
+                        <div class="input-group mb-4">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('Password') }}" required>
                             @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
                         <div class="row">
+                            <div class="col-12">
+                                <div class="col-md-6">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                        <label class="form-check-label" for="remember">
+                                            {{ __('Remember Me') }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-6">
                                 <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
                             </div>
                             @if (Route::has('password.request'))
                                 <div class="col-6 text-end">
-                                    <a href="{{ route('password.request') }}" class="btn btn-link px-0"
-                                       type="button">{{ __('Forgot Your Password?') }}</a>
+                                    <a href="{{ route('password.request') }}" class="btn btn-link px-0" type="button">{{ __('Forgot Your Password?') }}</a>
                                 </div>
                             @endif
                         </div>
@@ -52,7 +63,7 @@
                     <div>
                         <h2>{{ __('Sign up') }}</h2>
                         <a href="{{ route('register') }}"
-                           class="btn btn-lg btn-outline-light mt-3">{{ __('Register') }}</a>
+                            class="btn btn-lg btn-outline-light mt-3">{{ __('Register') }}</a>
                     </div>
                 </div>
             </div>

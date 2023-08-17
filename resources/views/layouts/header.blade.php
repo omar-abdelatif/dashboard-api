@@ -14,11 +14,7 @@
             <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
         </li>
     </ul>
-    <ul class="header-nav ms-auto">
-        <li class="nav-item">
-            <img src="" alt={{ Auth::user()->name }}>
-        </li>
-    </ul>
+    <ul class="header-nav ms-auto"></ul>
     <ul class="header-nav ms-3">
         <li class="nav-item dropdown">
             <a class="nav-link py-0 align-items-center" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

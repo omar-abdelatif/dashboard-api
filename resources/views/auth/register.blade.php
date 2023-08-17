@@ -72,7 +72,7 @@
                         <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
                     </div>
 
-                    <div class="input-group mb-4">
+                    {{-- <div class="input-group mb-4">
                         <span class="input-group-text">
                             <svg class="icon">
                                 <use xlink:href="{{ asset('icons/coreui.svg#cil-image') }}"></use>
@@ -84,7 +84,7 @@
                                 {{$message}}
                             </span>
                         @enderror
-                    </div>
+                    </div> --}}
 
                     <button class="btn btn-block btn-success" type="submit">{{ __('Register') }}</button>
 
